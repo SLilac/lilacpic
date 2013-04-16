@@ -8,11 +8,13 @@ import MySQLdb
 class Model:
     @staticmethod
     def initilize(settings):
-        if Model.hasattr("_db_settings", None) == None:
+        if not hasattr(Model, "_db_settings"):
             Model._db_settings = settings
   
     def __init__(self):
         self._db = None
+        self._max_idle_sec = 
+        self.host = Model._db_settings['host']
         self._data = {}
         
 
