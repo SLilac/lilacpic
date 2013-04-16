@@ -14,13 +14,26 @@ class Model:
     def __init__(self):
         self._db = None
         self._data = {}
+        
 
         pass
+    
+    def __del__(self):
+        self.close()
+        
+    def autocommit(switch):
+        pass
+    
+    def close(self):
+        if self._db:
+            self._db.close()
+        self._db = None
     
     def __getitem__(self, row):
         return self._data[row]
 
     def _connect(self):
+        self._db = MySQLdb.connect()
         pass
 
     def _reconnect(self):
